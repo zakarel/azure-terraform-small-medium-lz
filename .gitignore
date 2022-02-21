@@ -2,6 +2,7 @@ azure-vm/*
 nginx-container/*
 terraform-azure-rg/*
 **/.terraform/*
+.terraform/*
 *.tfstate
 *.tfstate.*
 crash.log
