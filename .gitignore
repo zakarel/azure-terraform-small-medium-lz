@@ -17,3 +17,4 @@ override.tf.json
 *_override.tf.json
 .terraformrc
 terraform.rc
+4snetHub-3vnetSpokes/.terraform
