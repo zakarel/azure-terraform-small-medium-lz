@@ -1,0 +1,3 @@
+azure-vm/*
+nginx-container/*
+terraform-azure-rg/*
