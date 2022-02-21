@@ -4,6 +4,7 @@ terraform-azure-rg/*
 **/.terraform/*
 .terraform/*
 */.terraform
+*/.terraform.lock*
 */.terraform/*
 *.tfstate
 *.tfstate.*
