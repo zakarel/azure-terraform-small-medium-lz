@@ -3,6 +3,8 @@ nginx-container/*
 terraform-azure-rg/*
 **/.terraform/*
 .terraform/*
+*/.terraform
+*/.terraform/*
 *.tfstate
 *.tfstate.*
 crash.log
