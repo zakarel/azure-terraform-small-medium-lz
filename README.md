@@ -6,6 +6,13 @@
 - 4snetHub-3vnetSpoke - terraform files to deploy a: 4 subnet hub virtual network & 1 subnet 3 virtual network spokes.
 - Securing Hub - WIP
 
+## Architectures
+- 4snetHub-3vnetSpoke
+
+![4snetHub-3vnetSpoke](https://github.com/zakarel/Azure-terraform-templates/tree/main/architectures/4snetHub-3vnetSpoke-Arch.png)
+
+- Securing Hub - WIP
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
