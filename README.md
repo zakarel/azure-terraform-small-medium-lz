@@ -9,7 +9,7 @@
 ## Architectures
 - 4snetHub-3vnetSpoke
 
-![4snetHub-3vnetSpoke](https://github.com/zakarel/Azure-terraform-templates/tree/main/architectures/4snetHub-3vnetSpoke-Arch.png)
+![4snetHub-3vnetSpoke-Arch.png](/architectures/4snetHub-3vnetSpoke-Arch.png)
 
 - Securing Hub - WIP
 
