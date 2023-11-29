@@ -6,6 +6,18 @@ terraform {
     }
   }
 }
+variable "spokes" {
+  description = "Map of spokes to create"
+  type = map(object({
+    name          = string
+    address_space = string
+  }))
+  default = {
+    spoke1 = { name = "spoke1", address_space = "10.10.0.0/16" },
+    spoke2 = { name = "spoke2", address_space = "10.100.0.0/16" },
+    spoke3 = { name = "spoke3", address_space = "10.200.0.0/16" }
+  }
+}
 
 resource "azurerm_resource_group" "rg-hub" {
   name     = "rg-hub-${var.env}-${var.hub-project-name}"
@@ -73,9 +85,11 @@ resource "azurerm_network_interface" "nic-hub" {
   }
 }
 
-# Spoke 1
-resource "azurerm_resource_group" "rg-spoke1" {
-  name     = "rg-spoke-${var.env}-${var.spoke1-name}"
+# Spokes
+resource "azurerm_resource_group" "rg-spoke" {
+  for_each = var.spokes
+
+  name     = "rg-spoke-${var.env}-${each.value.name}"
   location = var.location
   tags = {
     environment = var.env
@@ -83,73 +97,24 @@ resource "azurerm_resource_group" "rg-spoke1" {
   }
 }
 
-resource "azurerm_virtual_network" "vnet-spoke1" {
-  name                = "vnet-spoke-${var.env}-${var.spoke1-name}"
-  address_space       = ["10.10.0.0/16"]
-  location            = azurerm_resource_group.rg-spoke1.location
-  resource_group_name = azurerm_resource_group.rg-spoke1.name
+resource "azurerm_virtual_network" "vnet-spoke" {
+  for_each = var.spokes
+
+  name                = "vnet-spoke-${var.env}-${each.value.name}"
+  address_space       = [each.value.address_space]
+  location            = azurerm_resource_group.rg-spoke[each.key].location
+  resource_group_name = azurerm_resource_group.rg-spoke[each.key].name
   tags = {
     environment = var.env
     source      = "terraform"
   }
-}
-resource "azurerm_subnet" "snet-spoke1" {
-  name                 = "snet-workload1"
-  resource_group_name  = azurerm_resource_group.rg-spoke1.name
-  virtual_network_name = azurerm_virtual_network.vnet-spoke1.name
-  address_prefixes     = ["10.10.0.0/16"]
 }
 
+resource "azurerm_subnet" "snet-spoke" {
+  for_each = var.spokes
 
-# Spoke 2
-resource "azurerm_resource_group" "rg-spoke2" {
-  name     = "rg-spoke-${var.env}-${var.spoke2-name}"
-  location = var.location
-  tags = {
-    environment = var.env
-    source      = "terraform"
-  }
-}
-resource "azurerm_virtual_network" "vnet-spoke2" {
-  name                = "vnet-spoke-${var.env}-${var.spoke2-name}"
-  address_space       = ["10.100.0.0/16"]
-  location            = azurerm_resource_group.rg-spoke2.location
-  resource_group_name = azurerm_resource_group.rg-spoke2.name
-  tags = {
-    environment = var.env
-    source      = "terraform"
-  }
-}
-resource "azurerm_subnet" "snet-spoke2" {
-  name                 = "snet-workload2"
-  resource_group_name  = azurerm_resource_group.rg-spoke2.name
-  virtual_network_name = azurerm_virtual_network.vnet-spoke2.name
-  address_prefixes     = ["10.100.0.0/16"]
-}
-
-
-# Spoke 3
-resource "azurerm_resource_group" "rg-spoke3" {
-  name     = "rg-spoke-${var.env}-${var.spoke3-name}"
-  location = var.location
-  tags = {
-    environment = var.env
-    source      = "terraform"
-  }
-}
-resource "azurerm_virtual_network" "vnet-spoke3" {
-  name                = "vnet-spoke-${var.env}-${var.spoke3-name}"
-  address_space       = ["10.200.0.0/16"]
-  location            = azurerm_resource_group.rg-spoke3.location
-  resource_group_name = azurerm_resource_group.rg-spoke3.name
-  tags = {
-    environment = var.env
-    source      = "terraform"
-  }
-}
-resource "azurerm_subnet" "snet-spoke3" {
-  name                 = "snet-workload3"
-  resource_group_name  = azurerm_resource_group.rg-spoke3.name
-  virtual_network_name = azurerm_virtual_network.vnet-spoke3.name
-  address_prefixes     = ["10.200.0.0/16"]
+  name                 = "snet-workload-${each.key}"
+  resource_group_name  = azurerm_resource_group.rg-spoke[each.key].name
+  virtual_network_name = azurerm_virtual_network.vnet-spoke[each.key].name
+  address_prefixes     = [cidrsubnet(each.value.address_space, 8, 0)]
 }
