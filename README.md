@@ -22,13 +22,13 @@ These instructions will get you a copy of the project up and running on your loc
 - Azure CLI
 - Azure Subscription
 - Terraform package installed
-- Sufficient Cloud permissions 
+- Sufficient Cloud permissions
 
 ### Installing
 
 1. Cloning the project to you local workstation:
 
-```
+```bash
 git clone git@github.com:zakarel/Azure-terraform-templates.git
 ```
 
