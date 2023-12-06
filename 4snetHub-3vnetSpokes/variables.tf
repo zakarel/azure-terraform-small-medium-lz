@@ -3,37 +3,36 @@ variable "location" {
   description = "azure resources location"
   default = "eastus"
 }
-variable "hub-project-name" {
+variable "product-name" {
   type = string
-  description = "(mandatory) the project/app name. e.g Cars Manufacturing"
+  description = "(Mandatory) the project/app name. e.g Cars Manufacturing"
 }
-variable "env" {
-  type = string
-  description = "(mandatory) the environment for all the resources in this setup. e.g dev/prod/qa"
+variable "vnets" {
+  description = "Map of vnets to create"
+  type = map(object({
+    name          = string
+    address_space = string
+  }))
+  default = {
+    spoke1 = { name = "hub", address_space = "10.0.0.0/20" },
+    spoke2 = { name = "prod", address_space = "10.1.0.0/16" },
+    spoke3 = { name = "staging", address_space = "10.2.0.0/16" },
+    spoke4 = { name = "dev", address_space = "10.3.0.0/16" }
+  }
 }
-variable "spoke1-name" {
-  type = string
-  description = "(mandatory) the name of the app in spoke1. e.g app1/function2"  
+locals {
+  subnets = {
+    "snet-management" = {
+      address_prefix = "10.0.1.0/24"
+    },
+    "GatewaySubnet" = {
+      address_prefix = "10.0.15.224/27"
+    },
+    "snet-shared" = {
+      address_prefix = "10.0.4.0/22"
+    },
+    "AzureFirewallSubnet" = {
+      address_prefix = "10.0.15.0/26"
+    }
+  }
 }
-variable "spoke2-name" {
-  type = string
-  description = "(mandatory) the name of the app in spoke2. e.g app1/function2"
-  
-}
-variable "spoke3-name" {
-  type = string
-  description = "(mandatory) the name of the app in spoke3. e.g app1/function2"
-  
-}
-# Used for auto signin
-/*
-variable "subscription_id" {
-  type = string
-  description = "your subscription ID"
-}
-
-variable "client_id" {
-  type = string
-  description = "your client ID"
-}
-*/
