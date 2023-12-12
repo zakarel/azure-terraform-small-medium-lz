@@ -1,10 +1,15 @@
 # Small/Medium Business landing zone v2
 
 <img src="https://img.shields.io/badge/Azure%20CLI%20-v2.19.1-blue?style=flat-square">   <img src="https://img.shields.io/badge/VSCode%20-v1.53.2-purple?style=flat-square">
+<img src="https://img.shields.io/badge/AzureRM%20-v3.84-navy?style=flat-square">
+
+## Introduction
+This repository projects is to provide startups/small/medium businesses with a simple hub and spoke landing zone where the enterprise landing zone doesn't fit
 
 ## Projects
-- 4snetHub-3vnetSpoke - terraform files to deploy a: 4 subnet hub virtual network & 1 subnet 3 virtual network spokes.
-- Securing Hub - WIP
+- smb-landingzonev2 - Small/medium business terraform Azure simple landing zone.
+deployment of a main hub with 3 vnet spokes each represent an environment with corresponding network security groups.
+- smb-hub-secure - WIP
 
 ## Architectures
 - SMB-architecture-v2.png
@@ -29,7 +34,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Cloning the project to you local workstation:
 
 ```bash
-git clone git@github.com:zakarel/Azure-terraform-templates.git
+git clone git@github.com:zakarel/azure-terraform-bp-lz.git
 ```
 
 ## Configuration
