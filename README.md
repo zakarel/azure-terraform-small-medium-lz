@@ -1,4 +1,4 @@
-# Azure Terraform Best Practices Landing Zone
+# Small/Medium Business landing zone v2
 
 <img src="https://img.shields.io/badge/Azure%20CLI%20-v2.19.1-blue?style=flat-square">   <img src="https://img.shields.io/badge/VSCode%20-v1.53.2-purple?style=flat-square">
 
@@ -7,9 +7,9 @@
 - Securing Hub - WIP
 
 ## Architectures
-- 4snetHub-3vnetSpoke
+- SMB-architecture-v2.png
 
-![4snetHub-3vnetSpoke-Arch.png](/architectures/4snetHub-3vnetSpoke-Arch.png)
+![SMB-architecture-v2.png](/architectures/SMB-architecture-v2.png)
 
 - Securing Hub - WIP
 

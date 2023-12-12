@@ -5,7 +5,9 @@ variable "location" {
 }
 variable "product-name" {
   type = string
-  description = "(Mandatory) the project/app name. e.g Cars Manufacturing"
+  nullable = false
+  description = "(Mandatory) Project/Application name. e.g skynet \nThis will be used as prefix for all resources created."
+  
 }
 variable "vnets" {
   description = "Map of vnets to create"

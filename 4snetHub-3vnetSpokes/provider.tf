@@ -2,8 +2,8 @@ provider "azurerm" {
   skip_provider_registration = "true"
   features {}
   # Used for auto signin
-/*  subscription_id = ""
+/*  client_id = ""
   tenant_id = ""
-  client_id = ""
-*/
+  subscription_id = ""
+  */
 }
