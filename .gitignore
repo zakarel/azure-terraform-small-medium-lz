@@ -20,5 +20,8 @@ override.tf.json
 terraform.rc
 *.infracost/*
 .infracost/*
-4snetHub-3vnetSpokes/.terraform
 toolkit-example/.infracost/terraform_modules/manifest.json
+
+*/provider.tf
+**/provider.tf
+**/*/provider.tf
