@@ -32,41 +32,52 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-1. Cloning the project to you local workstation:
+  Cloning the project to you local workstation:
 
-    `git clone git@github.com:zakarel/azure-terraform-bp-lz.git`
+`git clone git@github.com:zakarel/azure-terraform-bp-lz.git`
 
 ## Configuration
-1. Initializing
-```
+
+### Initializing
+
+```bash
 cd <PROJECT>
 terraform init
 ```
-2. Log in to azure
-```
+
+### Log in to azure
+
+```bash
 az login
 az account list -o table #Make sure your on the right sub
 az account set -s '<SUB>' #Change to different sub
 ```
-3. You can add a .tfsvars file with the predefined vars and place it in the current folder.
-```
+
+### You can add a .tfsvars file with the predefined vars and place it in the current folder
+
+```bash
 echo "location = "westus" >> pre.tfsvars
 # Make sure it's where the main.tf file is.
 ```
 
-## Validation
-```
+### Validation
+
+```bash
 cd <PROJECT>
 terraform fmt #Formatting the indentation/spaces/conf in the tf files
 terraform validate #Validating there are no errors in the tf files
 ```
+
 ## Plan
-```
+
+```bash
 cd <PROJECT>
 terraform plan -out=test1.tfplan
 ```
-After the interactive var configuration a plan will be saved on the same folder which you can execute with
-```
+
+### After the interactive var configuration a plan will be saved on the same folder which you can execute with
+
+```bash
 terraform apply test1.tfplan
 ```
 
@@ -74,7 +85,7 @@ terraform apply test1.tfplan
 
 Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
 
-* **Tzahi Ariel** - *Initial work* - [zakarel](https://github.com/zakarel)
+- **Tzahi Ariel** - *Initial work* - [zakarel](https://github.com/zakarel)
 
 ## License
 

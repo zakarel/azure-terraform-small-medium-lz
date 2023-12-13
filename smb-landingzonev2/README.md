@@ -48,6 +48,8 @@ To get started with the SMB Landing Zone, follow these steps:
     - Associate each NSG created to the relevant subnet.
     - Peering each spokes vnet created to the hub vnet.
 
+** Consider creating a Virtual Private Network and attach it to the GatewaySubnet in the Hub vnet and creating Azure firewall to associate with the AzureFirewallSubnet also for enhanced network security and secured access to private resources.
+
 ## Contributing
 
 Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
