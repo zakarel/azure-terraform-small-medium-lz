@@ -17,3 +17,9 @@ output "resource_group_ids" {
   value = { for r in azurerm_resource_group.rg-spoke : r.name => r.id }
   description = "The IDs of the resource groups"
 }
+
+output "product-name" {
+  value = var.product_name
+  description = "The product name"
+  
+}

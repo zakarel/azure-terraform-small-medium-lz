@@ -1,41 +1,40 @@
-# Small/Medium Business landing zone v2
+# Small/Medium Business landing zone projects
 
 <img src="https://img.shields.io/badge/Azure%20CLI%20-v2.19.1-blue?style=flat-square">   <img src="https://img.shields.io/badge/VSCode%20-v1.53.2-purple?style=flat-square">
 <img src="https://img.shields.io/badge/AzureRM%20-v3.84-navy?style=flat-square">
+<img src="https://img.shields.io/badge/jq%20-v3.84-darkgreen?style=flat-square">
 
 ## Introduction
-This repository projects is to provide startups/small/medium businesses with a simple hub and spoke landing zone where the enterprise landing zone doesn't fit
+
+This repository projects is to provide startups, small, medium businesses with a simple hub and spoke landing zone to get them quicky up and running on Azure. It is relevant where the [enterprise landing zone](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/) feels too much.
+It built out of project, each with a specific purpose.
 
 ## Projects
+
 - smb-landingzonev2 - Small/medium business terraform Azure simple landing zone.
 deployment of a main hub with 3 vnet spokes each represent an environment with corresponding network security groups.
+
 - smb-hub-secure - WIP
-
-## Architectures
-- SMB-architecture-v2.png
-
-![SMB-architecture-v2.png](/architectures/SMB-architecture-v2.png)
-
-- Securing Hub - WIP
+- smb-ubuntu-vm-deployment - WIP
+- smb-aks-deployment - WIP
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See section "Plan" for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-- Azure CLI
-- Azure Subscription
-- Terraform package installed
-- Sufficient Cloud permissions
+- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+- [Azure Subscription](https://azure.microsoft.com/en-us/pricing/purchase-options/pay-as-you-go/)
+- [Terraform package installed](https://developer.hashicorp.com/terraform/install)
+- [Azure subscription owner role](https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles)
+- [jq](https://jqlang.github.io/jq/download/)
 
 ### Installing
 
 1. Cloning the project to you local workstation:
 
-```bash
-git clone git@github.com:zakarel/azure-terraform-bp-lz.git
-```
+    `git clone git@github.com:zakarel/azure-terraform-bp-lz.git`
 
 ## Configuration
 1. Initializing
@@ -71,7 +70,9 @@ After the interactive var configuration a plan will be saved on the same folder 
 terraform apply test1.tfplan
 ```
 
-## Authors
+## Contributing
+
+Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
 
 * **Tzahi Ariel** - *Initial work* - [zakarel](https://github.com/zakarel)
 

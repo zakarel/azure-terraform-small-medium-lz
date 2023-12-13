@@ -3,7 +3,7 @@ variable "location" {
   description = "azure resources location"
   default = "eastus"
 }
-variable "product-name" {
+variable "product_name" {
   type = string
   nullable = false
   description = "(Mandatory) Project/Application name. e.g skynet \nThis will be used as prefix for all resources created."
@@ -23,7 +23,7 @@ variable "vnets" {
   }
 }
 locals {
-  subnets = {
+  subnets_hub = {
     "snet-management" = {
       address_prefix = "10.0.1.0/24"
     },
@@ -35,6 +35,21 @@ locals {
     },
     "AzureFirewallSubnet" = {
       address_prefix = "10.0.15.0/26"
+    }
+  }
+  subnets_dev = {
+    "default" = {
+      address_prefix = "10.3.1.0/24"
+    }
+  }
+  subnets_prod = {
+    "default" = {
+      address_prefix = "10.1.1.0/24"
+    }
+  }
+  subnets_staging = {
+    "default" = {
+      address_prefix = "10.2.1.0/24"
     }
   }
 }
